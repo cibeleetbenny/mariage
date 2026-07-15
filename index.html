@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cibele & Benny — Embarquement pour notre mariage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16283F;
+    --cream:#F6F1E4;
+    --paper:#FBF8F0;
+    --teal:#3A7276;
+    --coral:#E17A4E;
+    --gold:#C9A24B;
+    --sand:#E4D3AA;
+    --sand-deep:#D6BE8C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sand);
+    background-image:
+      radial-gradient(ellipse at top, rgba(255,255,255,0.35), transparent 55%),
+      radial-gradient(ellipse at bottom, rgba(58,114,118,0.10), transparent 55%),
+      repeating-radial-gradient(circle at 0 0, rgba(22,40,63,0.035) 0 1px, transparent 1px 3px);
+    background-size:auto, auto, 5px 5px;
+    color:var(--navy);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-size:.68rem;
+    color:var(--teal);
+  }
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    padding:22px 16px;
+    font-family:'Space Mono',monospace;
+    font-size:.62rem;
+    letter-spacing:.35em;
+    text-transform:uppercase;
+    color:rgba(22,40,63,0.5);
+  }
+  .topbar span.sep{color:var(--coral);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:20px 20px 60px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .hero-kicker{
+    text-align:center;
+    margin-bottom:22px;
+  }
+  .hero-kicker h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(2.1rem,6vw,3.4rem);
+    margin:6px 0 10px;
+    color:var(--navy);
+  }
+  .hero-kicker p{
+    font-family:'Space Mono',monospace;
+    font-size:.75rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin:0;
+  }
+
+  /* ---------- TICKET ---------- */
+  .ticket-wrap{
+    display:flex;
+    max-width:760px;
+    width:100%;
+    filter:drop-shadow(0 24px 46px rgba(22,40,63,0.28));
+    opacity:0;
+    transform:translateY(24px);
+    animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards .15s;
+  }
+  @keyframes rise{to{opacity:1;transform:translateY(0);}}
+
+  .ticket{
+    background:var(--paper);
+    color:var(--navy);
+    display:flex;
+    width:100%;
+    border-radius:14px;
+    overflow:hidden;
+    position:relative;
+    background-image:
+      linear-gradient(var(--paper),var(--paper)),
+      repeating-linear-gradient(115deg, rgba(22,40,63,0.035) 0 2px, transparent 2px 26px);
+    background-blend-mode:normal;
+  }
+  .ticket-main{
+    flex:1 1 68%;
+    padding:30px 26px 26px;
+    position:relative;
+  }
+  .ticket-airline{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px;
+  }
+  .ticket-airline .name{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--teal);
+  }
+  .ticket-airline .plane{
+    font-size:1.1rem;
+    color:var(--coral);
+    transform:rotate(45deg);
+    display:inline-block;
+  }
+  .couple-names{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(1.7rem,4.2vw,2.3rem);
+    line-height:1.05;
+    margin:0 0 22px;
+  }
+  .amp{color:var(--coral);font-style:italic;font-weight:300;padding:0 .12em;}
+
+  .field-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px 22px;
+    margin-bottom:20px;
+  }
+  .field-grid .wide{grid-column:1 / -1;}
+  .field label{
+    display:block;
+    font-family:'Space Mono',monospace;
+    font-size:.6rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:rgba(22,40,63,0.5);
+    margin-bottom:4px;
+  }
+  .field .val{
+    font-family:'Space Mono',monospace;
+    font-size:.95rem;
+    font-weight:700;
+    letter-spacing:.02em;
+  }
+  .field .val.small{font-size:.82rem;font-weight:400;}
+
+  .ticket-note{
+    border-top:1px dashed rgba(22,40,63,0.25);
+    padding-top:14px;
+    font-size:.86rem;
+    line-height:1.5;
+    color:rgba(22,40,63,0.85);
+  }
+  .ticket-note strong{color:var(--coral);}
+
+  /* perforation */
+  .perf{
+    position:relative;
+    width:0;
+    flex:0 0 0;
+  }
+  .perf::before{
+    content:"";
+    position:absolute;
+    top:0;bottom:0;left:-1px;
+    border-left:2px dashed rgba(22,40,63,0.28);
+  }
+  .perf .notch{
+    position:absolute;
+    left:-11px;
+    width:22px;height:22px;
+    background:var(--navy);
+    border-radius:50%;
+  }
+  .perf .notch.top{top:-11px;}
+  .perf .notch.bottom{bottom:-11px;}
+
+  .ticket-stub{
+    flex:1 1 32%;
+    padding:26px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
+    text-align:center;
+    background:linear-gradient(180deg, rgba(58,114,118,0.06), rgba(201,162,75,0.06));
+  }
+  .stub-top .val{font-size:1.5rem;font-weight:700;font-family:'Space Mono',monospace;}
+  .stub-top label{
+    font-family:'Space Mono',monospace;
+    font-size:.58rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:rgba(22,40,63,0.5);
+    margin-bottom:4px;
+    display:block;
+  }
+  .barcode{
+    width:100%;
+    height:46px;
+    margin:16px 0;
+    background:repeating-linear-gradient(90deg, var(--navy) 0 2px, transparent 2px 3px, var(--navy) 5px 6px, transparent 6px 9px, var(--navy) 9px 12px, transparent 12px 15px);
+    opacity:.85;
+  }
+  .stub-code{
+    font-family:'Space Mono',monospace;
+    font-size:.65rem;
+    letter-spacing:.1em;
+    color:rgba(22,40,63,0.55);
+  }
+
+  .scroll-cue{
+    margin-top:34px;
+    text-align:center;
+    font-family:'Space Mono',monospace;
+    font-size:.62rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:rgba(22,40,63,0.45);
+  }
+  .scroll-cue .arrow{
+    display:block;
+    margin:8px auto 0;
+    animation:bob 1.8s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+  /* ---------- SECTIONS (luggage tags) ---------- */
+  .section{
+    max-width:640px;
+    margin:0 auto;
+    padding:70px 22px;
+  }
+  .section-title{
+    font-family:'Space Mono',monospace;
+    font-size:.65rem;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    color:var(--teal);
+    text-align:center;
+    margin-bottom:34px;
+  }
+  .tag{
+    background:var(--paper);
+    color:var(--navy);
+    border-radius:10px;
+    padding:30px 28px;
+    margin-bottom:26px;
+    position:relative;
+    box-shadow:0 16px 32px rgba(22,40,63,0.16);
+  }
+  .tag::before{
+    content:"";
+    position:absolute;
+    top:22px;left:-9px;
+    width:18px;height:18px;
+    background:var(--navy);
+    border-radius:50%;
+    box-shadow:inset 0 0 0 3px var(--paper);
+  }
+  .tag h3{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.4rem;
+    margin:0 0 12px;
+    color:var(--teal);
+  }
+  .tag p{
+    margin:0;
+    line-height:1.7;
+    font-size:.98rem;
+    color:rgba(22,40,63,0.85);
+  }
+  .tag p.placeholder{
+    font-style:italic;
+    color:rgba(22,40,63,0.45);
+  }
+
+  .location-address{
+    font-family:'Space Mono',monospace;
+    font-size:.72rem;
+    color:rgba(22,40,63,0.6);
+    margin:10px 0 14px;
+  }
+  .location-embed{
+    width:100%;
+    height:160px;
+    border:0;
+    border-radius:8px;
+    display:block;
+  }
+  .location-actions{
+    display:flex;
+    gap:10px;
+  }
+  .location-actions a{
+    flex:1;
+    text-align:center;
+    text-decoration:none;
+    font-family:'Space Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    padding:10px 12px;
+    border-radius:8px;
+  }
+  .btn-directions{
+    background:var(--navy);
+    color:var(--paper);
+  }
+  .btn-waze{
+    background:transparent;
+    border:1px solid var(--teal);
+    color:var(--teal);
+  }
+
+  /* ---------- RSVP ---------- */
+  .rsvp-card{
+    background:var(--paper);
+    color:var(--navy);
+    border-radius:14px;
+    padding:36px 28px;
+    text-align:center;
+    box-shadow:0 20px 42px rgba(22,40,63,0.2);
+    position:relative;
+    overflow:hidden;
+  }
+  .rsvp-card h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.7rem;
+    margin:6px 0 8px;
+  }
+  .rsvp-card .sub{
+    font-size:.9rem;
+    color:rgba(22,40,63,0.7);
+    margin-bottom:26px;
+  }
+  .rsvp-form{display:flex;flex-direction:column;gap:12px;max-width:360px;margin:0 auto;}
+  .rsvp-form input{
+    font-family:'Inter',sans-serif;
+    font-size:.95rem;
+    padding:13px 16px;
+    border-radius:8px;
+    border:1px solid rgba(22,40,63,0.2);
+    background:#fff;
+    color:var(--navy);
+  }
+  .rsvp-form input:focus{outline:2px solid var(--teal);outline-offset:1px;}
+  .rsvp-btn{
+    margin-top:6px;
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:.85rem;
+    padding:15px 20px;
+    border:none;
+    border-radius:8px;
+    background:var(--coral);
+    color:var(--paper);
+    cursor:pointer;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .rsvp-btn:hover{background:#d1682f;transform:translateY(-2px);}
+  .rsvp-btn:focus-visible{outline:3px solid var(--teal);outline-offset:2px;}
+  .rsvp-btn:disabled{opacity:.6;cursor:default;transform:none;}
+
+  .companion-input{
+    width:100%;
+  }
+  .counter-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:4px 2px;
+  }
+  .counter-row label{
+    font-family:'Space Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:rgba(22,40,63,0.5);
+    text-align:left;
+  }
+  .counter{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid rgba(22,40,63,0.2);
+    border-radius:8px;
+    background:#fff;
+    padding:4px 6px;
+  }
+  .counter-btn{
+    width:28px;height:28px;
+    border-radius:6px;
+    border:none;
+    background:transparent;
+    color:var(--teal);
+    font-family:'Space Mono',monospace;
+    font-size:1rem;
+    line-height:1;
+    cursor:pointer;
+  }
+  .counter-btn:hover{background:rgba(58,114,118,0.1);}
+  .counter-val{
+    min-width:18px;
+    text-align:center;
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:.9rem;
+  }
+  .rsvp-total{
+    margin:2px 0 0;
+    font-family:'Space Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.04em;
+    color:rgba(22,40,63,0.6);
+    text-align:left;
+  }
+
+  .rsvp-deadline{
+    margin-top:20px;
+    font-family:'Space Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.05em;
+    color:rgba(22,40,63,0.55);
+  }
+
+  .stamp{
+    position:absolute;
+    top:38%;
+    left:50%;
+    width:200px;height:200px;
+    margin-left:-100px;margin-top:-100px;
+    border:5px solid var(--teal);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--teal);
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-size:.95rem;
+    line-height:1.3;
+    transform:rotate(-14deg) scale(2.4);
+    opacity:0;
+    pointer-events:none;
+    background:rgba(251,248,240,0.9);
+  }
+  .stamp.show{
+    animation:stamp-in .5s cubic-bezier(.2,.9,.3,1.2) forwards;
+  }
+  @keyframes stamp-in{
+    0%{opacity:0;transform:rotate(-14deg) scale(2.4);}
+    60%{opacity:1;transform:rotate(-14deg) scale(.92);}
+    100%{opacity:1;transform:rotate(-14deg) scale(1);}
+  }
+  .rsvp-confirmed .rsvp-form,
+  .rsvp-confirmed .rsvp-deadline,
+  .rsvp-confirmed .rsvp-countdown{opacity:.15;}
+
+  .rsvp-countdown{
+    text-align:center;
+    margin-bottom:26px;
+  }
+  .rsvp-countdown .countdown-value{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.8rem;
+    color:var(--coral);
+    margin:4px 0;
+  }
+  .rsvp-countdown .countdown-sub{
+    font-size:.82rem;
+    color:rgba(22,40,63,0.65);
+    margin:0;
+  }
+
+  footer{
+    text-align:center;
+    padding:50px 20px 60px;
+    font-family:'Space Mono',monospace;
+    font-size:.62rem;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    color:rgba(22,40,63,0.4);
+  }
+
+  @media (max-width:600px){
+    .ticket-wrap{flex-direction:column;}
+    .ticket{flex-direction:column;}
+    .perf{display:none;}
+    .ticket-stub{
+      flex-direction:row;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 22px;
+      border-top:2px dashed rgba(22,40,63,0.25);
+    }
+    .stub-top{text-align:left;}
+    .barcode{display:none;}
+    .field-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .ticket-wrap{animation:none;opacity:1;transform:none;}
+    .scroll-cue .arrow{animation:none;}
+    .stamp.show{animation:none;opacity:1;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">LOVE UNION AIRLINES <span class="sep">·</span> LOVE UNION AIRLINES <span class="sep">·</span> LOVE UNION AIRLINES</div>
+
+  <section class="hero">
+    <div class="hero-kicker">
+      <p class="eyebrow">Invitation de mariage</p>
+      <h1>Cibele <span class="amp">&</span> Benny</h1>
+      <p>vous invitent chaleureusement à embarquer</p>
+    </div>
+
+    <div class="ticket-wrap">
+      <div class="ticket">
+        <div class="ticket-main">
+          <div class="ticket-airline">
+            <span class="name">Carte d'embarquement</span>
+            <span class="plane">✈️</span>
+          </div>
+          <div class="couple-names">Cibele <span class="amp">&</span> Benny</div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label>Destination</label>
+              <div class="val">Mindelo</div>
+              <div class="val small">São Vicente, Cabo Verde</div>
+            </div>
+            <div class="field">
+              <label>Date</label>
+              <div class="val">27.07.2027</div>
+              <div class="val small">Mardi</div>
+            </div>
+            <div class="field">
+              <label>Horaire</label>
+              <div class="val">17h30</div>
+            </div>
+            <div class="field">
+              <label>Réservation</label>
+              <div class="val">RSV</div>
+            </div>
+            <div class="field wide">
+              <label>Programme</label>
+              <div class="val small">Cérémonie · Réception</div>
+            </div>
+          </div>
+
+          <div class="ticket-note">
+            Merci de nous <strong>prévenir de votre présence avant le 31/01/2027</strong>.
+          </div>
+        </div>
+
+        <div class="perf"><span class="notch top"></span><span class="notch bottom"></span></div>
+
+        <div class="ticket-stub">
+          <div class="stub-top">
+            <label>Places</label>
+            <div class="val">2</div>
+          </div>
+          <div class="barcode"></div>
+          <div class="stub-code">SAO-VTE · 27JUL27</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      Faites défiler
+      <span class="arrow">↓</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-title">Avant le grand jour</p>
+    <div class="tag">
+      <h3>Notre histoire</h3>
+      <p class="placeholder">— Remplacez ce texte par votre histoire : comment vous vous êtes rencontrés, votre demande en mariage, ce que ce voyage à Mindelo représente pour vous. —</p>
+    </div>
+    <div class="tag">
+      <h3>Cérémonie</h3>
+      <iframe class="location-embed" loading="lazy" title="Carte — Cérémonie" src="https://www.google.com/maps?q=Praia%20de%20Laginha%2C%20Mindelo%2C%20Cabo%20Verde&output=embed"></iframe>
+      <p class="location-address">Praia de Laginha, Mindelo, Cabo Verde — 17h30</p>
+      <div class="location-actions">
+        <a class="btn-directions" href="https://www.google.com/maps/search/?api=1&query=Praia%20de%20Laginha%2C%20Mindelo%2C%20Cabo%20Verde" target="_blank" rel="noopener" aria-label="Itinéraire vers la cérémonie">↗ Itinéraire</a>
+        <a class="btn-waze" href="https://waze.com/ul?q=Praia%20de%20Laginha%2C%20Mindelo%2C%20Cabo%20Verde&navigate=yes" target="_blank" rel="noopener" aria-label="Itinéraire Waze vers la cérémonie">Waze</a>
+      </div>
+    </div>
+
+    <div class="tag">
+      <h3>Réception</h3>
+      <p class="location-address" style="margin-top:-6px;">Vin d'honneur, dîner et la fête jusqu'au bout de la nuit</p>
+      <iframe class="location-embed" loading="lazy" title="Carte — Réception" src="https://www.google.com/maps?q=Mansa%20Marina%20Hotel%2C%20Mindelo%2C%20Cabo%20Verde&output=embed"></iframe>
+      <p class="location-address">Mansa Marina Hotel, Mindelo, Cabo Verde</p>
+      <div class="location-actions">
+        <a class="btn-directions" href="https://www.google.com/maps/search/?api=1&query=Mansa%20Marina%20Hotel%2C%20Mindelo%2C%20Cabo%20Verde" target="_blank" rel="noopener" aria-label="Itinéraire vers la réception">↗ Itinéraire</a>
+        <a class="btn-waze" href="https://waze.com/ul?q=Mansa%20Marina%20Hotel%2C%20Mindelo%2C%20Cabo%20Verde&navigate=yes" target="_blank" rel="noopener" aria-label="Itinéraire Waze vers la réception">Waze</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="rsvp">
+    <div class="rsvp-card" id="rsvpCard">
+      <div class="rsvp-countdown" id="rsvpCountdown">
+        <p class="eyebrow">Confirmez avant</p>
+        <p class="countdown-value" id="countdownValue">—</p>
+        <p class="countdown-sub">pour nous dire si vous serez des nôtres</p>
+      </div>
+      <p class="eyebrow">Confirmation</p>
+      <h3>Serez-vous des nôtres ?</h3>
+      <p class="sub">Une seule ligne suffit pour embarquer avec nous.</p>
+
+      <form class="rsvp-form" id="rsvpForm">
+        <input type="text" id="guestName" placeholder="Votre nom" required>
+
+        <input type="text" id="companionName" class="companion-input" placeholder="Compagnon/conjoint(e) (optionnel)">
+
+        <div class="counter-row">
+          <label>Enfant(s)</label>
+          <div class="counter">
+            <button type="button" class="counter-btn" id="childrenMinus" aria-label="Retirer un enfant">−</button>
+            <span class="counter-val" id="childrenCount">0</span>
+            <button type="button" class="counter-btn" id="childrenPlus" aria-label="Ajouter un enfant">+</button>
+          </div>
+        </div>
+
+        <div class="counter-row">
+          <label>Adultes supplémentaires</label>
+          <div class="counter">
+            <button type="button" class="counter-btn" id="extraAdultsMinus" aria-label="Retirer un adulte">−</button>
+            <span class="counter-val" id="extraAdultsCount">0</span>
+            <button type="button" class="counter-btn" id="extraAdultsPlus" aria-label="Ajouter un adulte">+</button>
+          </div>
+        </div>
+
+        <p class="rsvp-total" id="rsvpTotal">Total : 1 personne</p>
+
+        <button type="submit" class="rsvp-btn" id="rsvpBtn">Oui, je serai là</button>
+      </form>
+
+      <p class="rsvp-deadline">Confirmation attendue avant le 31 janvier 2027<br>Votre réponse est enregistrée automatiquement</p>
+
+      <div class="stamp" id="stamp">Embarquement<br>confirmé ✓</div>
+    </div>
+  </section>
+
+  <footer>Cibele & Benny · 27 juillet 2027 · Mindelo, Cabo Verde</footer>
+
+  <iframe name="hiddenRsvpFrame" id="hiddenRsvpFrame" style="display:none" title="Envoi RSVP"></iframe>
+  <form id="hiddenGoogleForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSfrssXtKOKuM2iahBxVmUosm16J9sd4pkyqW_I3bKuOd_dA8A/formResponse"
+        method="POST" target="hiddenRsvpFrame" style="display:none">
+    <input type="text" name="entry.1529032957" id="hf_name">
+    <input type="text" name="entry.1781680325" id="hf_companion">
+    <input type="text" name="entry.805436237" id="hf_children">
+    <input type="text" name="entry.458276541" id="hf_extraAdults">
+  </form>
+
+<script>
+  const form = document.getElementById('rsvpForm');
+  const card = document.getElementById('rsvpCard');
+  const stamp = document.getElementById('stamp');
+  const btn = document.getElementById('rsvpBtn');
+
+  const MAX_COUNTER = 6;
+  let childrenCount = 0;
+  let extraAdultsCount = 0;
+
+  const childrenCountEl = document.getElementById('childrenCount');
+  const extraAdultsCountEl = document.getElementById('extraAdultsCount');
+  const rsvpTotalEl = document.getElementById('rsvpTotal');
+  const companionInput = document.getElementById('companionName');
+
+  function updateTotal(){
+    const total = 1 + (companionInput.value.trim() ? 1 : 0) + childrenCount + extraAdultsCount;
+    rsvpTotalEl.textContent = 'Total : ' + total + (total > 1 ? ' personnes' : ' personne');
+  }
+
+  function makeCounterHandlers(minusId, plusId, countEl, getCount, setCount){
+    document.getElementById(minusId).addEventListener('click', () => {
+      setCount(Math.max(0, getCount() - 1));
+      countEl.textContent = getCount();
+      updateTotal();
+    });
+    document.getElementById(plusId).addEventListener('click', () => {
+      setCount(Math.min(MAX_COUNTER, getCount() + 1));
+      countEl.textContent = getCount();
+      updateTotal();
+    });
+  }
+
+  makeCounterHandlers('childrenMinus', 'childrenPlus', childrenCountEl,
+    () => childrenCount, (v) => childrenCount = v);
+  makeCounterHandlers('extraAdultsMinus', 'extraAdultsPlus', extraAdultsCountEl,
+    () => extraAdultsCount, (v) => extraAdultsCount = v);
+
+  companionInput.addEventListener('input', updateTotal);
+  updateTotal();
+
+  const hiddenFrame = document.getElementById('hiddenRsvpFrame');
+  const hiddenGoogleForm = document.getElementById('hiddenGoogleForm');
+
+  function showConfirmation(){
+    card.classList.add('rsvp-confirmed');
+    stamp.classList.add('show');
+    btn.textContent = 'Merci !';
+  }
+
+  const RSVP_DEADLINE = new Date('2027-01-31T23:59:00');
+  const countdownValueEl = document.getElementById('countdownValue');
+
+  function updateCountdown(){
+    const now = new Date();
+    const diffMs = RSVP_DEADLINE - now;
+    if(diffMs <= 0){
+      countdownValueEl.textContent = 'Délai dépassé';
+      return;
+    }
+    const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+    countdownValueEl.textContent = days + (days > 1 ? ' jours' : ' jour');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 60 * 60 * 1000);
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('guestName').value.trim();
+    if(!name) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Confirmation...';
+
+    document.getElementById('hf_name').value = name;
+    document.getElementById('hf_companion').value = companionInput.value.trim();
+    document.getElementById('hf_children').value = childrenCount;
+    document.getElementById('hf_extraAdults').value = extraAdultsCount;
+
+    let confirmed = false;
+    const onLoad = () => {
+      if(confirmed) return;
+      confirmed = true;
+      hiddenFrame.removeEventListener('load', onLoad);
+      showConfirmation();
+    };
+    hiddenFrame.addEventListener('load', onLoad);
+    // Filet de sécurité si l'évènement load ne se déclenche pas (ex: navigateur exotique)
+    setTimeout(onLoad, 2500);
+
+    hiddenGoogleForm.submit();
+  });
+</script>
+
+</body>
+</html>
