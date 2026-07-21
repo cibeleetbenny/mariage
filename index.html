@@ -299,6 +299,22 @@
     font-style:italic;
     color:rgba(22,40,63,0.45);
   }
+  .tag p.quote{
+    font-style:italic;
+    color:var(--teal);
+    margin-top:16px;
+  }
+  .tag p + p{
+    margin-top:14px;
+  }
+  .story-photo{
+    width:100%;
+    max-height:340px;
+    object-fit:cover;
+    border-radius:8px;
+    margin-bottom:18px;
+    display:block;
+  }
 
   .location-address{
     font-family:'Space Mono',monospace;
@@ -585,7 +601,7 @@
           </div>
 
           <div class="ticket-note">
-            Merci de nous <strong>prévenir de votre présence avant le 31/01/2027</strong>.
+            Merci de nous <strong>prévenir de votre présence avant le 31/12/2026</strong>.
           </div>
         </div>
 
@@ -612,7 +628,16 @@
     <p class="section-title">Avant le grand jour</p>
     <div class="tag">
       <h3>Notre histoire</h3>
-      <p class="placeholder">— Remplacez ce texte par votre histoire : comment vous vous êtes rencontrés, votre demande en mariage, ce que ce voyage à Mindelo représente pour vous. —</p>
+      <img class="story-photo" src="pics/IMG_5686.JPG" alt="Cibele et Benny">
+      <p>Nos chemins se sont longtemps frôlés.</p>
+      <p>Nous fréquentions les mêmes lieux, croisions les mêmes visages, vivions tout près l'un de l'autre… sans jamais nous rencontrer.</p>
+      <p>Puis, il y a 16 ans, nos regards se sont enfin croisés.</p>
+      <p>Depuis ce jour, nous avons construit une histoire faite d'amour, de complicité et de souvenirs.</p>
+      <p>Cette histoire s'est enrichie de nos deux merveilleux enfants, qui en sont aujourd'hui le plus beau reflet.</p>
+      <p>Aujourd'hui, c'est au bord de l'océan, sur notre plage préférée, Laginha, que nous avons choisi de nous dire « oui », les pieds dans le sable et le cœur tourné vers l'avenir.</p>
+      <p>Nous serions profondément heureux de vous avoir à nos côtés pour partager cette journée qui marquera le début d'un nouveau chapitre de notre histoire.</p>
+      <p>Le 27.07.2027 à 17h30<br>Praia de Laginha – Mindelo, São Vicente, Cabo Verde</p>
+      <p class="quote">Il aura fallu des années pour que nos chemins se croisent…<br>Une vie ne sera pas de trop pour continuer le chemin ensemble.</p>
     </div>
     <div class="tag">
       <h3>Cérémonie</h3>
@@ -650,6 +675,8 @@
       <form class="rsvp-form" id="rsvpForm">
         <input type="text" id="guestName" placeholder="Votre nom" required>
 
+        <input type="tel" id="guestPhone" class="companion-input" placeholder="Téléphone (indicatif + numéro, ex : +352 621 000 000)">
+
         <input type="text" id="companionName" class="companion-input" placeholder="Compagnon/conjoint(e) (optionnel)">
 
         <div class="counter-row">
@@ -675,7 +702,7 @@
         <button type="submit" class="rsvp-btn" id="rsvpBtn">Oui, je serai là</button>
       </form>
 
-      <p class="rsvp-deadline">Confirmation attendue avant le 31 janvier 2027<br>Votre réponse est enregistrée automatiquement</p>
+      <p class="rsvp-deadline">Confirmation attendue avant le 31 décembre 2026<br>Votre réponse est enregistrée automatiquement</p>
 
       <div class="stamp" id="stamp">Embarquement<br>confirmé ✓</div>
     </div>
@@ -743,7 +770,7 @@
     btn.textContent = 'Merci !';
   }
 
-  const RSVP_DEADLINE = new Date('2027-01-31T23:59:00');
+  const RSVP_DEADLINE = new Date('2026-12-31T23:59:00');
   const countdownValueEl = document.getElementById('countdownValue');
 
   function updateCountdown(){
