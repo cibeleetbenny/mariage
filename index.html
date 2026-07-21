@@ -675,7 +675,7 @@
       <form class="rsvp-form" id="rsvpForm">
         <input type="text" id="guestName" placeholder="Votre nom" required>
 
-        <input type="tel" id="guestPhone" class="companion-input" placeholder="Téléphone (indicatif + numéro, ex : +352 621 000 000)">
+        <input type="tel" id="guestPhone" class="companion-input" placeholder="Téléphone (indicatif + numéro, ex : +352 621 000 000)" required>
 
         <input type="text" id="companionName" class="companion-input" placeholder="Compagnon/conjoint(e) (optionnel)">
 
@@ -715,6 +715,7 @@
         action="https://docs.google.com/forms/d/e/1FAIpQLSfrssXtKOKuM2iahBxVmUosm16J9sd4pkyqW_I3bKuOd_dA8A/formResponse"
         method="POST" target="hiddenRsvpFrame" style="display:none">
     <input type="text" name="entry.1529032957" id="hf_name">
+    <input type="text" name="entry.1082071312" id="hf_phone">
     <input type="text" name="entry.1781680325" id="hf_companion">
     <input type="text" name="entry.805436237" id="hf_children">
     <input type="text" name="entry.458276541" id="hf_extraAdults">
@@ -796,6 +797,7 @@
     btn.textContent = 'Confirmation...';
 
     document.getElementById('hf_name').value = name;
+    document.getElementById('hf_phone').value = document.getElementById('guestPhone').value.trim();
     document.getElementById('hf_companion').value = companionInput.value.trim();
     document.getElementById('hf_children').value = childrenCount;
     document.getElementById('hf_extraAdults').value = extraAdultsCount;
