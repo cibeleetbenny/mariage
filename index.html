@@ -58,10 +58,19 @@
 
   /* ---------- HERO ---------- */
   .hero{
-    padding:20px 20px 60px;
+    padding:20px 20px 30px;
     display:flex;
     flex-direction:column;
     align-items:center;
+    position:relative;
+  }
+  .hero-artwork{
+    position:absolute;
+    top:6px;
+    right:2%;
+    width:170px;
+    opacity:.16;
+    pointer-events:none;
   }
   .hero-kicker{
     text-align:center;
@@ -241,6 +250,13 @@
     text-transform:uppercase;
     color:rgba(22,40,63,0.45);
   }
+  .compass-icon{
+    width:30px;
+    height:30px;
+    display:block;
+    margin:0 auto 8px;
+    opacity:.75;
+  }
   .scroll-cue .arrow{
     display:block;
     margin:8px auto 0;
@@ -252,7 +268,7 @@
   .section{
     max-width:640px;
     margin:0 auto;
-    padding:70px 22px;
+    padding:40px 22px;
   }
   .section-title{
     font-family:'Space Mono',monospace;
@@ -560,6 +576,7 @@
   <div class="topbar">LOVE UNION AIRLINES <span class="sep">·</span> LOVE UNION AIRLINES <span class="sep">·</span> LOVE UNION AIRLINES</div>
 
   <section class="hero">
+    <img class="hero-artwork" src="artwork/islands.png" alt="" aria-hidden="true">
     <div class="hero-kicker">
       <p class="eyebrow">Invitation de mariage</p>
       <h1>Cibele <span class="amp">&</span> Benny</h1>
@@ -613,12 +630,13 @@
             <div class="val">2</div>
           </div>
           <div class="barcode"></div>
-          <div class="stub-code">SVXE · 27JUL27</div>
+          <div class="stub-code">VXE · 27JUL27</div>
         </div>
       </div>
     </div>
 
     <div class="scroll-cue">
+      <img class="compass-icon" src="artwork/boussole.png" alt="" aria-hidden="true">
       Faites défiler
       <span class="arrow">↓</span>
     </div>
